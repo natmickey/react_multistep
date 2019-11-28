@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 
 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
 import { List, ListItem } from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
+import ProgressBar from '../ProgressBar/index';
 
 export class Confirm extends Component {
     continue = e => {
         e.preventDefault();
         // Process Form //
+        this.setState ({percentage: this.state.percentage + 25});
         this.props.nextStep();
     };
 
     back = e => {
         e.preventDefault();
+        this.setState ({percentage: this.state.percentage - 25});
         this.props.prevStep();
+    };
+
+    state= {
+        percentage: 60
     };
 
     render() {
@@ -22,7 +28,8 @@ export class Confirm extends Component {
         return (
             <MuiThemeProvider>
                 <React.Fragment>
-                    <AppBar title="Confirm User Details" />
+                    <ProgressBar percentage={this.state.percentage} />  
+                    <h4>Confirm User Details</h4>
                     <List>
                         <ListItem
                             primaryText="First Name"

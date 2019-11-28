@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 
 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
+
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import ProgressBar from '../ProgressBar/index';
 
 export class FormPersonalDetails extends Component {
     continue = e => {
         e.preventDefault();
+        this.setState ({percentage: this.state.percentage + 25});
         this.props.nextStep();
     };
 
     back = e => {
         e.preventDefault();
+        this.setState ({percentage: this.state.percentage - 25});
         this.props.prevStep();
+    };
+
+    state= {
+        percentage: 35
     };
 
     render() {
@@ -21,7 +28,7 @@ export class FormPersonalDetails extends Component {
         return (
             <MuiThemeProvider>
                 <React.Fragment>
-                    <AppBar title="Enter Personal Details" />
+                    <ProgressBar percentage={this.state.percentage} />  
                     <TextField
                         hintText="Enter Your Occupation"
                         floatingLabelText="Occupation"

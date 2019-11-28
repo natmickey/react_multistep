@@ -1,32 +1,47 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 
 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
+import { makeStyles } from '@material-ui/core/styles'
+import DatePicker from 'material-ui/DatePicker';
 import RaisedButton from 'material-ui/RaisedButton';
+import ProgressBar from '../ProgressBar';
 
 export class FormUserDetails extends Component {
     continue = e => {
         e.preventDefault();
+        this.setState ({percentage: this.state.percentage+25});
         this.props.nextStep();
     }
+
+    back = e => {
+
+    };
+
+    state= {
+        percentage: 10
+    };
+
 
     render() {
         const { values, handleChange } = this.props;
         return (
             <MuiThemeProvider>
                 <React.Fragment>
-                    <AppBar title="Enter User Details" />
+                <ProgressBar percentage={this.state.percentage} />
+                    <h4>Tell us what you are looking for?</h4>
                     <TextField
-                        hintText="Enter Your First Name"
-                        floatingLabelText="First Name"
-                        onChange={handleChange('firstName')}
-                        defaultValue={values.firstName}
+                        hintText="Title"
+                        label="Title"
+                        floatingLabelText="Title"
+                        placeholder="I'd like to Paint my home for the Christmas"
+                        onChange={handleChange('title')}
+                        defaultValue={values.title}
                     />
                     <br/>
                     <TextField
-                        hintText="Enter Your Last Name"
-                        floatingLabelText="Last Name"
+                        hintText="Description"
+                        floatingLabelText="Description"
                         onChange={handleChange('lastName')}
                         defaultValue={values.lastName}
                     />
@@ -44,17 +59,28 @@ export class FormUserDetails extends Component {
                         style={styles.button}
                         onClick={this.continue}
                     />
-                    
+                    <RaisedButton
+                        label="Cancel"
+                        primary={false}
+                        style={styles.button}
+                        onClick={this.back}
+                    />
+
                 </React.Fragment>
             </MuiThemeProvider>
         )
     }
 }
 
-const styles = {
+const styles = makeStyles(theme => ({
     button: {
-        margin : 15
+        margin : 15,
+    },
+    textField: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: 200,
     }
-}
+}));
 
 export default FormUserDetails
