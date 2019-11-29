@@ -24,15 +24,15 @@ export class FormUserDetails extends Component {
 
 
     render() {
-        const { values, handleChange } = this.props;
+        const { values, handleChange, handleChangeDate } = this.props;
         return (
             <MuiThemeProvider>
                 <React.Fragment>
                 <ProgressBar percentage={this.state.percentage} />
                     <h4>Tell us what you are looking for?</h4>
                     <TextField
+                        name="Title"
                         hintText="Title"
-                        label="Title"
                         floatingLabelText="Title"
                         placeholder="I'd like to Paint my home for the Christmas"
                         onChange={handleChange('title')}
@@ -40,17 +40,29 @@ export class FormUserDetails extends Component {
                     />
                     <br/>
                     <TextField
+                        name ="Description"
                         hintText="Description"
                         floatingLabelText="Description"
-                        onChange={handleChange('lastName')}
-                        defaultValue={values.lastName}
+                        onChange={handleChange('description')}
+                        defaultValue={values.description}
                     />
                     <br/>
-                    <TextField
-                        hintText="Enter Your Email"
-                        floatingLabelText="Email"
-                        onChange={handleChange('email')}
-                        defaultValue={values.email}
+                    <DatePicker
+                        name= "Start Date"
+                        hintText="Start Date"
+                        floatingLabelText="Start Date"
+                        onChange={this.handleChangeDate}
+                        selected={this.state.startDate}
+                        defaultValue={values.startDate}
+                    />
+                    <br/>
+                    <DatePicker
+                        name= "End Date"
+                        hintText="End Date"
+                        floatingLabelText="End Date"
+                        selected={this.state.endDate}
+                        onChange={this.handleChangeDate}
+                        defaultValue={values.endDate}
                     />
                     <br/>
                     <RaisedButton

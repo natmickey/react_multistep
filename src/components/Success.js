@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 
-'@material-ui/core/MuiThemeProvider';
+'material-ui/styles/MuiThemeProvider';
 import ProgressBar from '../ProgressBar/index';
 
 export class Success extends Component {

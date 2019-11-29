@@ -3,21 +3,23 @@ import FormUserDetails from './FormUserDetails'
 import FormPersonalDetails from './FormPersonalDetails'
 import Confirm from './Confirm'
 import Success from './Success'
+import DatePicker from 'material-ui/DatePicker/DatePicker'
 
 export class UserForm extends Component {
     state= {
         step: 1,
         title: '',
         description: '',
-        startDate: '',
-        endDate: '',
+        startDate: new Date(),
+        endDate: new Date(+10),
     }
 
     //proceed to next step
     nextStep = () => {
         const { step } = this.state;
         this.setState({
-            step: step + 1
+            step: step + 1,
+
         });
     }
 
@@ -31,13 +33,24 @@ export class UserForm extends Component {
 
     // Handle fields change
     handleChange = input => e => {
-        this.setState({[input]: e.target.value});
+        //this.setState({[input]: e.target.value});
+        //this.setState({ keywords: e.target.value });
+        this.setState({
+            [input]: e.target.value
+        });
+    }
+
+    handleChangeDate = date => e => {
+        this.setState({
+          dueDate: date,
+          startDate: date
+        }, () => console.log(this.state.dueDate));
     }
 
     render() {
         const { step } = this.state;
-        const { title, description, startDate, endDate} = this.state;
-        const values = { title, description, startDate, endDate}
+        const { title, description, startDate, endDate, percentage} = this.state;
+        const values = { title, description, startDate, endDate, percentage}
 
         switch(step) {
             case 1:
