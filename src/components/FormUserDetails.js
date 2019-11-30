@@ -24,7 +24,7 @@ export class FormUserDetails extends Component {
 
 
     render() {
-        const { values, handleChange, handleChangeDate } = this.props;
+        const { values, handleChange, handleChangeDate, onChangeEnd } = this.props;
         return (
             <MuiThemeProvider>
                 <React.Fragment>
@@ -51,8 +51,10 @@ export class FormUserDetails extends Component {
                         name= "Start Date"
                         hintText="Start Date"
                         floatingLabelText="Start Date"
-                        onChange={this.handleChangeDate}
-                        selected={this.state.startDate}
+                        //onChange={onChangeStart('startDate')}
+                        onChange={(value, e) => this.handleChangeDate(value, e)}
+                        selected={this.state.startDate} 
+                        Value={this.state.startDate}
                         defaultValue={values.startDate}
                     />
                     <br/>
@@ -61,7 +63,8 @@ export class FormUserDetails extends Component {
                         hintText="End Date"
                         floatingLabelText="End Date"
                         selected={this.state.endDate}
-                        onChange={this.handleChangeDate}
+                        onChange={this.onChangeEnd}
+                        Value={this.state.startDate}
                         defaultValue={values.endDate}
                     />
                     <br/>

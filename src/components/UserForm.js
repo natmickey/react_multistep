@@ -4,6 +4,7 @@ import FormPersonalDetails from './FormPersonalDetails'
 import Confirm from './Confirm'
 import Success from './Success'
 import DatePicker from 'material-ui/DatePicker/DatePicker'
+import moment from 'moment'
 
 export class UserForm extends Component {
     state= {
@@ -11,7 +12,7 @@ export class UserForm extends Component {
         title: '',
         description: '',
         startDate: new Date(),
-        endDate: new Date(+10),
+        endDate: moment()
     }
 
     //proceed to next step
@@ -31,20 +32,32 @@ export class UserForm extends Component {
         });
     }
 
-    // Handle fields change
-    handleChange = input => e => {
-        //this.setState({[input]: e.target.value});
-        //this.setState({ keywords: e.target.value });
+    onChangeStart= (e) => {
+        
+        console.log('this.state.startDate',this.state.startDate);
+        if (typeof e.target != 'undefined'){
         this.setState({
-            [input]: e.target.value
+            startDate: e.target.value,
+        });
+    }
+    };
+
+   
+    onChangeEnd= (e) =>{
+        this.setState({
+            endDate: e.target.value,
         });
     }
 
-    handleChangeDate = date => e => {
-        this.setState({
-          dueDate: date,
-          startDate: date
-        }, () => console.log(this.state.dueDate));
+    // Handle fields change
+    handleChange = input  => e  =>{
+        this.setState({[input]: e.target.value});
+        //this.setState({ keywords: e.target.value });
+    }
+
+    handleChangeDate(value, e) {
+        console.log(value); // this will be a moment date object
+        console.log(e.target.value); // this will be a string value in datepicker input field
     }
 
     render() {
@@ -59,6 +72,9 @@ export class UserForm extends Component {
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
+                        handleChangeDate= {this.handleChangeDate}
+                        //onChangeStart= {this.onChangeStart}
+                        onChangeEnd= {this.onChangeEnd}
                         values={values}
                     />
                 )
@@ -68,6 +84,7 @@ export class UserForm extends Component {
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
+                        handleChangeDate={this.handleChangedate}
                         values={values}
                     />
                 )

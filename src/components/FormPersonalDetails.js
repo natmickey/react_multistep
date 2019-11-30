@@ -24,11 +24,12 @@ export class FormPersonalDetails extends Component {
     };
 
     render() {
-        const { values, handleChange } = this.props;
+        const { values, handleChange, onChange1 } = this.props;
         return (
             <MuiThemeProvider>
                 <React.Fragment>
                     <ProgressBar percentage={this.state.percentage} />  
+                    <h4>Form personal details</h4>
                     <TextField
                         hintText="Enter Your Occupation"
                         floatingLabelText="Occupation"
