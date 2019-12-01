@@ -6,18 +6,18 @@ import ProgressBar from '../ProgressBar/index';
 export class FormContact extends Component {
     continue = e => {
         e.preventDefault();
-        this.setState ({percentage: this.state.percentage + 25});
+        this.setState ({percentage: this.state.percentage + 20});
         this.props.nextStep();
     };
 
     back = e => {
         e.preventDefault();
-        this.setState ({percentage: this.state.percentage - 25});
+        this.setState ({percentage: this.state.percentage - 20});
         this.props.prevStep();
     };
 
     state= {
-        percentage: 75,
+        percentage: 60,
     };
     
     render() {
@@ -35,12 +35,14 @@ export class FormContact extends Component {
                             primary={false}
                             style={styles.button}
                             onClick={this.back}
+                            id="backLocationButton"
                         />
                         <RaisedButton
                             label="Preview"
                             primary={true}
                             style={styles.button}
                             onClick={this.continue}
+                            id="previewButton"
                         />
                         
                     </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import FormUserDetails from './FormUserDetails'
-import FormPersonalDetails from './FormPersonalDetails'
+import FormUserDetails from './UserDetails'
+import FormServiceDetails from './ServiceDetails'
 import FormLocation from './location'
 import FormContact from './contact'
 import Confirm from './Confirm'
@@ -14,7 +14,6 @@ export class UserForm extends Component {
         description: '',
         startDate: new Date(),
         endDate: new Date(),
-        value:'',
     }
 
     //proceed to next step
@@ -33,6 +32,7 @@ export class UserForm extends Component {
             step: step - 1
         });
     }
+
 
     // Handle fields change
     handleChange = input  => e  =>{
@@ -57,7 +57,7 @@ export class UserForm extends Component {
                 )
             case 2:
                 return (
-                    <FormPersonalDetails 
+                    <FormServiceDetails 
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}

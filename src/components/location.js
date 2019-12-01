@@ -6,18 +6,18 @@ import ProgressBar from '../ProgressBar/index';
 export class FormLocation extends Component {
     continue = e => {
         e.preventDefault();
-        this.setState ({percentage: this.state.percentage + 25});
+        this.setState ({percentage: this.state.percentage + 20});
         this.props.nextStep();
     };
 
     back = e => {
         e.preventDefault();
-        this.setState ({percentage: this.state.percentage - 25});
+        this.setState ({percentage: this.state.percentage - 20});
         this.props.prevStep();
     };
 
     state= {
-        percentage: 50,
+        percentage: 40,
     };
     
     render() {
@@ -35,12 +35,14 @@ export class FormLocation extends Component {
                             primary={false}
                             style={styles.button}
                             onClick={this.back}
+                            id="backServicesButton"
                         />
                         <RaisedButton
                             label="Contact"
                             primary={true}
                             style={styles.button}
                             onClick={this.continue}
+                            id="contactButton"
                         />
                     </div>
                 </React.Fragment>

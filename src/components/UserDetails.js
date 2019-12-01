@@ -6,10 +6,10 @@ import { makeStyles } from '@material-ui/core/styles'
 import RaisedButton from 'material-ui/RaisedButton';
 import ProgressBar from '../ProgressBar';
 
-export class FormUserDetails extends Component {
+export class UserDetails extends Component {
     continue = e => {
         e.preventDefault();
-        this.setState ({percentage: this.state.percentage+25});
+        this.setState ({percentage: this.state.percentage+20});
         this.props.nextStep();
     }
 
@@ -32,9 +32,11 @@ export class FormUserDetails extends Component {
                     <TextField
                         label="Title"
                         placeholder="I'd like to Paint my home for the Christmas"
+                        autoFocus= 'true'
                         onChange={handleChange('title')}
                         defaultValue={values.title}
                         className='required textInput'
+                        id='titleTxtBox'
                     />
                     <br/>
                     <TextField
@@ -48,6 +50,7 @@ export class FormUserDetails extends Component {
                         multiline
                         rowsMax="4"
                         notched = 'false'
+                        id='descTxtBox'
                     />
                     <br/>
                     <p className='dateTitle'>Expected Timeline</p>
@@ -63,6 +66,7 @@ export class FormUserDetails extends Component {
                             InputLabelProps={{
                                 shrink: true,
                               }}
+                            id='stDateTxtBox'
                         />
                         <TextField
                             label = "End Date:"
@@ -70,11 +74,12 @@ export class FormUserDetails extends Component {
                             hintText="End Date"
                             floatingLabelText="End Date"
                             type="date"
-                            onChange={handleChange('EndDate')}
+                            onChange={handleChange('endDate')}
                             defaultValue={values.endDate}
                             InputLabelProps={{
                                 shrink: true,
                               }}
+                            id='endDateTxtBox'
                         />
                     </div>
                     <br/>
@@ -85,12 +90,14 @@ export class FormUserDetails extends Component {
                             primary={false}
                             style={styles.button}
                             onClick={this.back}
+                            id= 'cancelButton'
                         />
                         <RaisedButton
                             label="Services"
                             primary={true}
                             style={styles.button}
                             onClick={this.continue}
+                            id= 'servicesButton'
                         />
                     </div>
                 </React.Fragment>
@@ -111,4 +118,4 @@ const styles = makeStyles(theme => ({
 }));
 
 
-export default FormUserDetails
+export default UserDetails

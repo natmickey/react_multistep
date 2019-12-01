@@ -19,30 +19,21 @@ TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     flexGrow: 1,
-//     width: '100%',
-//   },
-// }));
-
-
-
-export class FormPersonalDetails extends Component {
+export class ServiceDetails extends Component {
     continue = e => {
         e.preventDefault();
-        this.setState ({percentage: this.state.percentage + 25});
+        this.setState ({percentage: this.state.percentage + 20});
         this.props.nextStep();
     };
 
     back = e => {
         e.preventDefault();
-        this.setState ({percentage: this.state.percentage - 25});
+        this.setState ({percentage: this.state.percentage - 20});
         this.props.prevStep();
     };
 
     state= {
-        percentage: 25,
+        percentage: 20,
         value: 0,
         setValue:0
     };
@@ -51,10 +42,8 @@ export class FormPersonalDetails extends Component {
     //     setValue(newValue);
     // };
     
-    handleChangeTab = newValue => e => {
-        
+    handleChangeTab = newValue => e => { 
         e.setValue = newValue;
-        
         this.setValue({value : newValue})// setValue(newValue);
     }
     render() {
@@ -95,18 +84,20 @@ export class FormPersonalDetails extends Component {
                     <div className="bg-apply bg-apply-service">
 
                     </div>
-                    <div className='actionButton'>
+                    <div className='actionButton' >
                         <RaisedButton
                             label="Details"
                             primary={false}
                             style={styles.button}
                             onClick={this.back}
+                            id= 'backDetailsButton'
                         />
                         <RaisedButton
                             label="Location"
                             primary={true}
                             style={styles.button}
                             onClick={this.continue}
+                            id="locationButton"
                         />
                         
                     </div>
@@ -122,4 +113,4 @@ const styles = {
     }
 }
 
-export default FormPersonalDetails
+export default ServiceDetails

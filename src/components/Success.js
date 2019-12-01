@@ -6,11 +6,11 @@ export class Success extends Component {
 
     back = e => {
         e.preventDefault();
-        this.setState ({percentage: this.state.percentage - 25});
+        this.setState ({percentage: this.state.percentage - 20});
         this.props.prevStep();
     };
     state= {
-        percentage: 125
+        percentage: 100
     };
     render() {
         return (
@@ -28,11 +28,7 @@ export class Success extends Component {
                                     primary={false}
                                     style={styles.back}
                                     onClick={this.back}
-                                />
-                                <RaisedButton
-                                    label="Done"
-                                    primary={true}
-                                    style={styles.continue}
+                                    id="backToSummary"
                                 />
                             </div>
                         </div>

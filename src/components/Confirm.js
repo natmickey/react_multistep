@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 
 'material-ui/styles/MuiThemeProvider';
-import { List, ListItem } from 'material-ui/List';
+import { List, ListItem } from 'material-ui//List';
 import RaisedButton from 'material-ui/RaisedButton';
 import ProgressBar from '../ProgressBar/index';
 
@@ -9,18 +9,18 @@ export class Confirm extends Component {
     continue = e => {
         e.preventDefault();
         // Process Form //
-        this.setState ({percentage: this.state.percentage + 25});
+        this.setState ({percentage: this.state.percentage + 20});
         this.props.nextStep();
     };
 
     back = e => {
         e.preventDefault();
-        this.setState ({percentage: this.state.percentage - 25});
+        this.setState ({percentage: this.state.percentage - 20});
         this.props.prevStep();
     };
 
     state= {
-        percentage: 100
+        percentage: 80
     };
 
     render() {
@@ -30,11 +30,13 @@ export class Confirm extends Component {
                 <React.Fragment>
                     <ProgressBar percentage={this.state.percentage} />  
                     <h4 className='titleDesc'>Here is your work Summary</h4>
-                    <List className='summaryListContainer'>
+                    <List className="summaryListContainer">
                         <ListItem
+                            className="item1"
                             primaryText = {title}
                         />
                         <ListItem
+                            className="item2"
                             primaryText= { description }
                         />
                         
@@ -46,12 +48,14 @@ export class Confirm extends Component {
                             primary={false}
                             style={styles.button}
                             onClick={this.back}
+                            id="backContactButton"
                         />
                         <RaisedButton
-                            label="Preview"
+                            label="Submit"
                             primary={true}
                             style={styles.button}
                             onClick={this.continue}
+                            id="submitButton"
                         />
                     </div>
                 </React.Fragment>
