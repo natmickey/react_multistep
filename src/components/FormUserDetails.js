@@ -50,23 +50,33 @@ export class FormUserDetails extends Component {
                         notched = 'false'
                     />
                     <br/>
-                    <TextField
-                        name= "Start Date"
-                        hintText="Start Date"
-                        floatingLabelText="Start Date"
-                        type="date"
-                        onChange={handleChange('startDate')}
-                        defaultValue={values.startDate}
-                    />
-                    <TextField
-                        name= "End Date"
-                        hintText="End Date"
-                        floatingLabelText="End Date"
-                        type="date"
-                        onChange={handleChange('EndDate')}
-                        defaultValue={values.endDate}
-                    />
-                    
+                    <p className='dateTitle'>Expected Timeline</p>
+                    <div className='dateContainer'>
+                        <TextField
+                            label = "Start Date:"
+                            name= "Start Date"
+                            hintText="Start Date"
+                            floatingLabelText="Start Date"
+                            type="date"
+                            onChange={handleChange('startDate')}
+                            defaultValue={values.startDate}
+                            InputLabelProps={{
+                                shrink: true,
+                              }}
+                        />
+                        <TextField
+                            label = "End Date:"
+                            name= "End Date"
+                            hintText="End Date"
+                            floatingLabelText="End Date"
+                            type="date"
+                            onChange={handleChange('EndDate')}
+                            defaultValue={values.endDate}
+                            InputLabelProps={{
+                                shrink: true,
+                              }}
+                        />
+                    </div>
                     <br/>
                     <br/>
                     <div className='actionButton'>

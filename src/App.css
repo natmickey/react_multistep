@@ -24,6 +24,7 @@
 }
 
 .titleDesc{ color: #3C4858; font-size: 26px;font-weight:700;}
+/*  Inputs */
 .textInput {width:50% !important;margin: 50px 0;}
 .MuiFormControl-root{margin: 20px 0 !important;}
 /* .required label:after {
@@ -43,7 +44,15 @@ textarea::placeholder{font-size: 14px;color: #d2d2d2;}
 
 .MuiInput-underline:after{border-bottom: 2px solid #9acffa !important;}
 /* .description label{top:-20px} */
+p.dateTitle{text-align:left;margin-left:25%;margin-bottom: 0;}
 
+
+.dateContainer{display: flex;flex-direction: row;justify-content: space-between;width:50%;margin-left:25%;}
+.dateContainer .MuiFormControl-root {margin: 0 !important;}
+.dateContainer .MuiFormControl-root:first-child {margin-left:80px !important;}
+.dateContainer .MuiInputLabel-formControl{left: -80px; font-size: 20px; top: 22px;}
+.dateContainer .Mui-focused.MuiInputLabel-shrink {    transform-origin: left left !important;}
+/* end inputs */
 .App .actionButton{display: flex;flex-direction: row;justify-content: space-between;}
 .continueBtn{color:'#fff';  border-color:'#2196F3'; background-color:'#2196F3';}
 .backBtn{ color:'#0275D8';  border-color:'#03A9F4'; background-color:'#fff';}
