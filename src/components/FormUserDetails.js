@@ -21,7 +21,6 @@ export class FormUserDetails extends Component {
         percentage: 0
     };
 
-
     render() {
         const { values, handleChange } = this.props;
 
@@ -52,13 +51,23 @@ export class FormUserDetails extends Component {
                     />
                     <br/>
                     <TextField
-                        hintText="Enter Your Email"
-                        floatingLabelText="Email"
-                        placeholder = "Email"
-                        onChange={handleChange('email')}
-                        defaultValue={values.email}
-                        className='required textInput'
+                        name= "Start Date"
+                        hintText="Start Date"
+                        floatingLabelText="Start Date"
+                        type="date"
+                        onChange={handleChange('startDate')}
+                        defaultValue={values.startDate}
                     />
+                    <TextField
+                        name= "End Date"
+                        hintText="End Date"
+                        floatingLabelText="End Date"
+                        type="date"
+                        onChange={handleChange('EndDate')}
+                        defaultValue={values.endDate}
+                    />
+                    
+                    <br/>
                     <br/>
                     <div className='actionButton'>
                         <RaisedButton
@@ -90,5 +99,6 @@ const styles = makeStyles(theme => ({
         width: 500,
     }
 }));
+
 
 export default FormUserDetails

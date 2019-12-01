@@ -32,11 +32,12 @@ export class Confirm extends Component {
                     <h4 className='titleDesc'>Here is your work Summary</h4>
                     <List className='summaryListContainer'>
                         <ListItem
-                        primaryText = {title}
+                            primaryText = {title}
                         />
                         <ListItem
-                            secondaryText= { description }
+                            primaryText= { description }
                         />
+                        
                     </List>
                     <div className="bg-apply bg-apply-summary"></div>
                     <div className='actionButton'>
