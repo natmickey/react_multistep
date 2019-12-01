@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 
-'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles'
-import DatePicker from 'material-ui/DatePicker';
+// import DatePicker from 'material-ui/DatePicker';
 import RaisedButton from 'material-ui/RaisedButton';
 import ProgressBar from '../ProgressBar';
 
@@ -19,53 +18,62 @@ export class FormUserDetails extends Component {
     };
 
     state= {
-        percentage: 10
+        percentage: 0
     };
 
 
     render() {
         const { values, handleChange } = this.props;
+
         return (
             <MuiThemeProvider>
                 <React.Fragment>
                 <ProgressBar percentage={this.state.percentage} />
-                    <h4>Tell us what you are looking for?</h4>
+                    <h4 className='titleDesc'>Tell us what you are looking for?</h4>
                     <TextField
-                        hintText="Title"
                         label="Title"
-                        floatingLabelText="Title"
                         placeholder="I'd like to Paint my home for the Christmas"
                         onChange={handleChange('title')}
                         defaultValue={values.title}
+                        className='required textInput'
                     />
                     <br/>
                     <TextField
-                        hintText="Description"
-                        floatingLabelText="Description"
-                        onChange={handleChange('lastName')}
-                        defaultValue={values.lastName}
+                        label='Description'
+                        placeholder="I could add more details on paintingmy home. I'd like to paint in santa theme"
+                        onChange={handleChange('description')}
+                        defaultValue={values.description}
+                        className='required textInput'
+                        variant="outlined"
+                        color="secondary"
+                        multiline
+                        rowsMax="4"
+                        notched = 'false'
                     />
                     <br/>
                     <TextField
                         hintText="Enter Your Email"
                         floatingLabelText="Email"
+                        placeholder = "Email"
                         onChange={handleChange('email')}
                         defaultValue={values.email}
+                        className='required textInput'
                     />
                     <br/>
-                    <RaisedButton
-                        label="Continue"
-                        primary={true}
-                        style={styles.button}
-                        onClick={this.continue}
-                    />
-                    <RaisedButton
-                        label="Cancel"
-                        primary={false}
-                        style={styles.button}
-                        onClick={this.back}
-                    />
-
+                    <div className='actionButton'>
+                        <RaisedButton
+                            label="Cancel"
+                            primary={false}
+                            style={styles.button}
+                            onClick={this.back}
+                        />
+                        <RaisedButton
+                            label="Services"
+                            primary={true}
+                            style={styles.button}
+                            onClick={this.continue}
+                        />
+                    </div>
                 </React.Fragment>
             </MuiThemeProvider>
         )
@@ -79,7 +87,7 @@ const styles = makeStyles(theme => ({
     textField: {
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
-        width: 200,
+        width: 500,
     }
 }));
 

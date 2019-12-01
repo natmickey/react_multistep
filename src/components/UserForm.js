@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import FormUserDetails from './FormUserDetails'
 import FormPersonalDetails from './FormPersonalDetails'
+import FormLocation from './location'
+import FormContact from './contact'
 import Confirm from './Confirm'
 import Success from './Success'
 
@@ -11,6 +13,7 @@ export class UserForm extends Component {
         description: '',
         startDate: '',
         endDate: '',
+        value:''
     }
 
     //proceed to next step
@@ -58,7 +61,24 @@ export class UserForm extends Component {
                         values={values}
                     />
                 )
-            case 3:
+                case 3:
+                    return (
+                        <FormLocation
+                            nextStep={this.nextStep}
+                            prevStep={this.prevStep}
+                            handleChange={this.handleChange}
+                            values={values}
+                        />
+                    )
+                case 4:
+                    return (
+                        <FormContact 
+                            nextStep={this.nextStep}
+                            prevStep={this.prevStep}
+                            values={values}
+                        />
+                    )
+            case 5:
                 return (
                     <Confirm 
                         nextStep={this.nextStep}
@@ -66,10 +86,9 @@ export class UserForm extends Component {
                         values={values}
                     />
                 )
-            case 4:
+            case 6:
                 return (
-                    <Success
-                    />
+                    <Success prevStep={this.prevStep} />
                 )
             default:
                 break

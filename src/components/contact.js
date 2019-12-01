@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 
-'material-ui/styles/MuiThemeProvider';
-import { List, ListItem } from 'material-ui/List';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import ProgressBar from '../ProgressBar/index';
 
-export class Confirm extends Component {
+export class FormContact extends Component {
     continue = e => {
         e.preventDefault();
-        // Process Form //
         this.setState ({percentage: this.state.percentage + 25});
         this.props.nextStep();
     };
@@ -20,28 +17,21 @@ export class Confirm extends Component {
     };
 
     state= {
-        percentage: 100
+        percentage: 75,
     };
-
+    
     render() {
-        const { values: {title,description} } = this.props;
+
         return (
             <MuiThemeProvider>
                 <React.Fragment>
                     <ProgressBar percentage={this.state.percentage} />  
-                    <h4 className='titleDesc'>Here is your work Summary</h4>
-                    <List className='summaryListContainer'>
-                        <ListItem
-                        primaryText = {title}
-                        />
-                        <ListItem
-                            secondaryText= { description }
-                        />
-                    </List>
-                    <div className="bg-apply bg-apply-summary"></div>
+                    <h4 className='titleDesc'>Choose the Contact Information</h4>
+                    
+                    <div className="bg-apply bg-apply-contact"></div>
                     <div className='actionButton'>
                         <RaisedButton
-                            label="Contact"
+                            label="Location"
                             primary={false}
                             style={styles.button}
                             onClick={this.back}
@@ -52,6 +42,7 @@ export class Confirm extends Component {
                             style={styles.button}
                             onClick={this.continue}
                         />
+                        
                     </div>
                 </React.Fragment>
             </MuiThemeProvider>
@@ -65,4 +56,4 @@ const styles = {
     }
 }
 
-export default Confirm
+export default FormContact;
